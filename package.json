@@ -1,0 +1,15 @@
+{
+  "name": "shri-homework-04-06",
+  "version": "1.0.0",
+  "description": "Домашнее задание 04-06. Инфраструктура, Node JS, Тестирование",
+  "main": "index.js",
+  "author": "lsnq <pv@lsnq.ru>",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^4.19.0",
+    "eslint-config-loris": "^9.1.0"
+  },
+  "scripts": {
+    "lint": "eslint app/**/*.js"
+  }
+}
