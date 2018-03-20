@@ -28,10 +28,12 @@
     "lint:scripts": "eslint app/**/*.js",
     "lint:styles": "stylelint app/**/*.scss",
     "lint": "yarn lint:scripts & yarn lint:styles",
-    "start:dev": "NODE_ENV=development nodemon app",
+    "build:prod": "webpack --mode production",
+    "build:dev": "webpack --mode development",
+    "build": "yarn test && yarn lint && yarn build:prod",
+    "start:dev": "nodemon dist & webpack --mode development --watch",
     "start:prod": "node dist",
-    "start": "yarn start:dev",
-    "webpack": "webpack --mode development"
+    "start": "yarn start:dev"
   },
   "dependencies": {
     "express": "^4.16.3"

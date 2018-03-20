@@ -1,9 +1,7 @@
-'use strict';
-
 const nodeExternals = require('webpack-node-externals');
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const extractSASS = new ExtractTextPlugin({filename: 'style.css'});
+const sass = new ExtractTextPlugin({filename: 'style.css'});
 
 module.exports = {
     entry: {
@@ -14,7 +12,7 @@ module.exports = {
         rules: [
             {
                 test: /\.scss$/,
-                use: extractSASS.extract({ // Instance 2
+                use: sass.extract({
                     fallback: 'style-loader',
                     use: ['css-loader', 'sass-loader']
                 })
@@ -22,7 +20,7 @@ module.exports = {
         ]
     },
     plugins: [
-        extractSASS // Instance 2
+        sass
     ],
     output: {
         path: path.join(__dirname, 'dist'),
