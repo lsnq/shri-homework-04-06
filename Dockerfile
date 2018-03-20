@@ -1,15 +1,13 @@
 FROM node:carbon
 
-WORKDIR /dist
+WORKDIR /app
 
-RUN yarn global add nodemon
-
-COPY package*.json ./
+COPY . .
 
 RUN yarn install
 
-
-COPY app /dist
+RUN yarn build
 
 EXPOSE 3000
-CMD ["node", "index.js"]
+
+CMD ["yarn", "start"]
