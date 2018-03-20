@@ -9,14 +9,19 @@
     "eslint": "^4.19.0",
     "eslint-config-loris": "^9.1.0",
     "mocha": "^5.0.4",
+    "nodemon": "^1.17.2",
     "stylelint": "^9.1.3",
     "stylelint-config-sass-guidelines": "^5.0.0",
     "stylelint-scss": "^2.5.0"
   },
   "scripts": {
-    "lint": "yarn run lint:scripts & yarn run lint:styles",
+    "start": "nodemon app/index.js",
+    "lint": "yarn lint:scripts & yarn lint:styles",
     "lint:scripts": "eslint app/**/*.js",
     "lint:styles": "stylelint app/**/*.scss",
     "test": "mocha test"
+  },
+  "dependencies": {
+    "express": "^4.16.3"
   }
 }
