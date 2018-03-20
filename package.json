@@ -9,7 +9,9 @@
     "eslint": "^4.19.0",
     "eslint-config-loris": "^9.1.0",
     "mocha": "^5.0.4",
+    "node-sass": "^4.7.2",
     "nodemon": "^1.17.2",
+    "sass-loader": "^6.0.7",
     "stylelint": "^9.1.3",
     "stylelint-config-sass-guidelines": "^5.0.0",
     "stylelint-scss": "^2.5.0",
@@ -19,16 +21,14 @@
   },
   "scripts": {
     "test": "mocha test",
-
     "lint:scripts": "eslint src/**/*.js",
     "lint:styles": "stylelint src/**/*.scss",
     "lint": "yarn lint:scripts & yarn lint:styles",
-
     "build:prod": "webpack --mode production --output ./dist/prod/main.js",
     "build:dev": "webpack --mode development --output ./dist/dev/main.js",
     "build": "yarn test && yarn lint && yarn build:prod",
-
-    "devServer": "yarn build:dev --watch & nodemon dist/dev/main.js"
+    "start:dev": "yarn build:dev --watch & nodemon dist/dev/main.js",
+    "start:prod": "nodemon dist/prod/main.js"
   },
   "dependencies": {
     "express": "^4.16.3"
