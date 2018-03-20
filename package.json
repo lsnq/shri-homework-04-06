@@ -6,17 +6,21 @@
   "author": "lsnq <pv@lsnq.ru>",
   "license": "MIT",
   "devDependencies": {
+    "css-loader": "^0.28.11",
     "eslint": "^4.19.0",
     "eslint-config-loris": "^9.1.0",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "mocha": "^5.0.4",
     "node-sass": "^4.7.2",
     "nodemon": "^1.17.2",
     "sass-loader": "^6.0.7",
+    "style-loader": "^0.20.3",
     "stylelint": "^9.1.3",
     "stylelint-config-sass-guidelines": "^5.0.0",
     "stylelint-scss": "^2.5.0",
     "webpack": "^4.1.1",
     "webpack-cli": "^2.0.12",
+    "webpack-dev-middleware": "^3.0.1",
     "webpack-node-externals": "^1.6.0"
   },
   "scripts": {
@@ -24,9 +28,10 @@
     "lint:scripts": "eslint app/**/*.js",
     "lint:styles": "stylelint app/**/*.scss",
     "lint": "yarn lint:scripts & yarn lint:styles",
-    "start:dev": "nodemon app/index.js",
-    "start:prod": "node dist/index.js",
-    "start": "yarn start:dev"
+    "start:dev": "NODE_ENV=development nodemon app",
+    "start:prod": "node dist",
+    "start": "yarn start:dev",
+    "webpack": "webpack --mode development"
   },
   "dependencies": {
     "express": "^4.16.3"

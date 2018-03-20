@@ -1,10 +1,18 @@
 'use strict';
 
+
+const webpack = require('webpack');
+const middleware = require('webpack-dev-middleware');
+const config = require('../webpack.config');
+const compiler = webpack(config);
+
 const express = require('express');
 const app = express();
-console.log(process.env.NODE_ENV);
+
+app.use(middleware(compiler));
+
 app.get('/', (req, res) => {
-    res.send('Hello World 32!');
+    res.send('Hello World 3!');
 });
 
 app.listen(3000, () => {
