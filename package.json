@@ -24,6 +24,7 @@
     "webpack-node-externals": "^1.6.0"
   },
   "scripts": {
+    "clean": "rm -rf dist/*",
     "test": "mocha test",
     "lint:scripts": "eslint app/**/*.js",
     "lint:styles": "stylelint app/**/*.scss",
@@ -31,9 +32,8 @@
     "build:prod": "webpack --mode production",
     "build:dev": "webpack --mode development",
     "build": "yarn test && yarn lint && yarn build:prod",
-    "start:dev": "nodemon dist & webpack --mode development --watch",
-    "start:prod": "node dist",
-    "start": "yarn start:dev"
+    "start:dev": "nodemon app/index.js",
+    "start": "node dist"
   },
   "dependencies": {
     "express": "^4.16.3"

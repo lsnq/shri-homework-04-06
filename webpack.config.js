@@ -6,7 +6,7 @@ const sass = new ExtractTextPlugin({filename: 'style.css'});
 module.exports = {
     entry: {
         index: './app/index.js',
-        'assets/main': './app/public/script.js'
+        'assets/script': './app/assets/script.js'
     },
     module: {
         rules: [
@@ -14,7 +14,10 @@ module.exports = {
                 test: /\.scss$/,
                 use: sass.extract({
                     fallback: 'style-loader',
-                    use: ['css-loader', 'sass-loader']
+                    use: [
+                        {loader: 'css-loader', options: {minimize: true}},
+                        'sass-loader'
+                    ]
                 })
             }
         ]
