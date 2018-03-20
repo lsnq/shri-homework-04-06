@@ -25,6 +25,7 @@
     "lint:styles": "stylelint app/**/*.scss",
     "lint": "yarn lint:scripts & yarn lint:styles",
     "start:dev": "nodemon app/index.js",
+    "start:prod": "node dist/index.js",
     "start": "yarn start:dev"
   },
   "dependencies": {
