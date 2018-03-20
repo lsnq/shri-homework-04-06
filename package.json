@@ -21,14 +21,11 @@
   },
   "scripts": {
     "test": "mocha test",
-    "lint:scripts": "eslint src/**/*.js",
-    "lint:styles": "stylelint src/**/*.scss",
+    "lint:scripts": "eslint app/**/*.js",
+    "lint:styles": "stylelint app/**/*.scss",
     "lint": "yarn lint:scripts & yarn lint:styles",
-    "build:prod": "webpack --mode production --output ./dist/prod/main.js",
-    "build:dev": "webpack --mode development --output ./dist/dev/main.js",
-    "build": "yarn test && yarn lint && yarn build:prod",
-    "start:dev": "yarn build:dev --watch & nodemon dist/dev/main.js",
-    "start:prod": "nodemon dist/prod/main.js"
+    "start:dev": "nodemon app/index.js",
+    "start": "yarn start:dev"
   },
   "dependencies": {
     "express": "^4.16.3"
