@@ -1,4 +1,5 @@
 {
   "image": "lsnq/git-app",
-  "name": "lsnq-git-app"
+  "name": "lsnq-git-app",
+  "buildpack":
 }
