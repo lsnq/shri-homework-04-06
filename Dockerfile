@@ -2,12 +2,12 @@ FROM node:alpine
 
 WORKDIR /app
 
-#COPY . .
+COPY . .
 
-#RUN yarn install
+RUN yarn install
 
-#RUN yarn build
+RUN yarn build
 
 EXPOSE 8080
 
-#CMD ["yarn", "start"]
+CMD ["yarn", "start"]
