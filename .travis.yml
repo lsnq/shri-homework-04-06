@@ -2,4 +2,9 @@ language: node_js
 sudo: false
 
 node_js:
-  - "8.9.1"
+  - 8.9.1
+deploy:
+  provider: heroku
+  api_key:
+    secure: XQXzajMDjbR1GSVjEW4Jg8g5RwMcNi1/VrnaLMWzOhNdszZVWd3phBj8B33sJP3oHiwP8tX+WhyjCabcEj4qG3E35B1nTE/Y/cTgLfPo1OP/ovOMzaLHM3FLYVyXqemPHofVtLl6nXaWaTAQgp9E/rf7VObxf6PQizH0htkK10MQIsFOTZV0lg6+fgXjuRO3vX6MeghUtfQSugXVGamKoqnQGycFp/0xCRxJNR+NFjY2ZVJJa85+YUlo6M6OpDBE6yvVeLvA1JQcqRJ1qZpFH1e5SirLnEvgxTSywy9bGDZZpMJfYOxRcXnIX85HeLiQbgdD8QENq8QHP8AsCuOrJdTD7wzEU2yr6vsuFWeeEtkXnqU9vFGqauGpS27Uu69FNWcioa2EGG944Y8DBaLpKhcKP9fABdIqnQZd0RASkYw6kAeKxWcBcbulIU3i97wC064Rij/nkXeozQyXKCSsB21r6laYz4++EVd0kX2m5PoYV9KrlRlEbMYB970YtjX7vMbVrEhMu7xIKaf07sSaYUr81Rgy8eKK3l/MkkkLvXR+lcGinInGg2JPNrw1LrHHVuSQZCtBh2ubfgI0j3uK/4FH7j4k5YNtbV9hpnrN9S2TX1x5QXoHrq+UKQhBSX/B0edSfBCsKqLAciyTCWfAlWce6nAaar0HYcGhTxJ5vEU=
+  app: git-app
