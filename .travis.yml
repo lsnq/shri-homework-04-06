@@ -13,7 +13,6 @@ jobs:
     - stage: build
       script: yarn build
 
-
     - stage: deploy to staging
       if: branch = master
       script: skip
