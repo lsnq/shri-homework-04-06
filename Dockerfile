@@ -8,7 +8,7 @@ RUN yarn install
 
 RUN yarn build
 
-RUN mkdir -p test2
+RUN mkdir -p test3
 
 EXPOSE 8080
 
