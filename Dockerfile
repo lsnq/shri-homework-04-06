@@ -4,9 +4,11 @@ WORKDIR /app
 
 COPY . .
 
-RUN yarn install --production=false
+RUN yarn install
 
 RUN yarn build
+
+RUN mkdir -p test
 
 EXPOSE 8080
 
