@@ -11,8 +11,9 @@ before_install:
   - docker build -t lsnq/git-app .
 
 script:
+  - yarn lint
+  - yarn test
   - yarn build
-
 
 deploy:
   provider: heroku
