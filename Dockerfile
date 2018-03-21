@@ -2,13 +2,11 @@ FROM node:alpine
 
 WORKDIR /app
 
-COPY . .
+COPY package.json package.json
 
 RUN yarn install
 
-RUN yarn build
-
-RUN mkdir -p test
+COPY dist dist
 
 EXPOSE 8080
 
