@@ -22,9 +22,7 @@ services:
 jobs:
   include:
     - stage: test
-      script:
-        - yarn lint
-        - yarn test
+      script: skip
     - stage: deploy to staging
       script: skip
       deploy:
