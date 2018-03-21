@@ -1,4 +1,2 @@
 build:
-  docker:
-    review: Dockerfile
-    staging: Dockerfile
+  docker: Dockerfile
