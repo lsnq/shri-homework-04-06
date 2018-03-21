@@ -10,6 +10,10 @@ services:
 before_install:
   - docker build -t lsnq/git-app .
 
+script:
+  - yarn build
+
+
 deploy:
   provider: heroku
   api_key:
