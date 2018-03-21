@@ -22,8 +22,13 @@ services:
 jobs:
   include:
     - stage: test
-      script: skip
+      script:
+        - yarn lint
+        - yarn test
+    - stage: build
+      script: yarn build
     - stage: deploy to staging
+      if: branch = master
       script: skip
       deploy:
         provider: heroku
