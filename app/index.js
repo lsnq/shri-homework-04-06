@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 
 app.get('/', (req, res) => {
-    res.send('Hello Heroku Pull Request #3!');
+    res.send('Hello Heroku Tag!');
 });
 
 const port = process.env.PORT || process.env.$PORT || 8080;
