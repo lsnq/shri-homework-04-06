@@ -35,7 +35,7 @@
     "start:dev": "nodemon app/index.js",
     "start": "node dist",
     "docker:build": "docker build -t lsnq/git-app .",
-    "docker:run": "docker run -it -p 3000:3000 --init lsnq/git-app"
+    "docker:run": "docker run -it -p 8080:8080 --init lsnq/git-app"
   },
   "dependencies": {
     "express": "^4.16.3"
