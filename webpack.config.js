@@ -5,6 +5,7 @@ const sass = new ExtractTextPlugin({filename: 'style.css'});
 
 module.exports = {
     entry: {
+        index: './app/index.js',
         'assets/script': './app/assets/script.js'
     },
     module: {
