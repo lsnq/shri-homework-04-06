@@ -2,6 +2,7 @@ const nodeExternals = require('webpack-node-externals');
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const sass = new ExtractTextPlugin({filename: 'style.css'});
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     entry: {
@@ -23,7 +24,10 @@ module.exports = {
         ]
     },
     plugins: [
-        sass
+        sass,
+        new CopyWebpackPlugin([
+            {from: 'app/views/', to: 'views/'}
+        ])
     ],
     output: {
         path: path.join(__dirname, 'dist'),
