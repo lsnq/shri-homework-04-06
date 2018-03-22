@@ -33,7 +33,7 @@
     "build:prod": "webpack --mode production",
     "build:dev": "webpack --mode development",
     "build": "yarn clean && yarn build:prod",
-    "start:dev": "nodemon app/index.js",
+    "start:dev": "yarn build:dev --watch & nodemon dist/index.js",
     "start": "node dist"
   },
   "dependencies": {
