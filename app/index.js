@@ -1,11 +1,18 @@
-const express = require('express');
+/*eslint no-console: off*/
+import router from './router';
+import path from 'path';
+import express from 'express';
+
 const app = express();
 
-app.get('/', (req, res) => {
-    res.send('Hello Heroku Tag!');
-});
+app.set('views', 'dist/views');
+app.set('view engine', 'pug');
 
-const port = process.env.PORT || process.env.$PORT || 8080;
+app.use(express.static(path.join('dist/assets')));
+
+app.use('/', router);
+
+const port = 8080;
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}!`);

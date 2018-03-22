@@ -1,7 +1,14 @@
 [![Build Status](https://travis-ci.org/lsnq/shri-homework-04-06.svg?branch=master)](https://travis-ci.org/lsnq/shri-homework-04-06)
 
 ### ШРИ. Домашнее задание 04
-
+Установка:
+````
+yarn
+````
+Запуск среды:
+````
+yarn start:dev
+````
 
 ##### Заметки (в основном для себя)
 1.1 Чтобы heroku собирал Dockerfile вместо деплоя репозитория по heroku.yml, жизненно необходимо указать 

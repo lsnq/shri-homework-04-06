@@ -1,8 +1,9 @@
 const nodeExternals = require('webpack-node-externals');
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const sass = new ExtractTextPlugin({filename: 'style.css'});
+const sass = new ExtractTextPlugin({filename: 'assets/style.css'});
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 module.exports = {
     entry: {
@@ -27,12 +28,25 @@ module.exports = {
         sass,
         new CopyWebpackPlugin([
             {from: 'app/views/', to: 'views/'}
-        ])
+        ]),
+        new BrowserSyncPlugin(
+            {
+                host: 'localhost',
+                port: 3000,
+                proxy: 'http://localhost:8080/'
+            },
+            {
+                reload: true
+            }
+        )
     ],
     output: {
         path: path.join(__dirname, 'dist'),
         filename: '[name].js'
     },
     target: 'node',
+    node: {
+        __dirname: true
+    },
     externals: [nodeExternals()]
 };
