@@ -39,5 +39,4 @@ router.get('/commit/:hash', async (req, res) => {
     });
 });
 
-
 module.exports = router;

@@ -90,7 +90,8 @@ code {
 .current {
   font-weight: bold;
   position: relative;
-  &:before {
+
+  &::before {
     content: '*';
     display: block;
     margin-left: -0.75em;
