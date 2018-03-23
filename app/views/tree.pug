@@ -1,8 +1,25 @@
 extends layout
 
 block content
-  h1= name
   if data
+    .path
+      - var baseUrl = `/branch/${name}/tree/`
+      a(href='/') REPO_NAME
+      a(href=baseUrl)= name
+      if path
+        - var links = path.split('/').filter(function(el) {return Boolean(el)})
+
+        each link, index in links
+          - var uri = baseUrl + links.slice(0,index+1).join('/') + '/'
+          a(href=`${uri}`)=link
+
     .list
-      each el in data
-        a(href=`/${el.type}/${el.hash}` class=el.type)=el.name
+      if data.list
+        each el in data.list
+          a(href=el)
+            if el.endsWith('/')
+              strong= el.slice(0,-1)
+            else
+              =el
+      else
+        code.file= data.fileContent

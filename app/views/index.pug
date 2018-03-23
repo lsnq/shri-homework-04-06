@@ -1,7 +1,10 @@
 extends layout
 
 block content
-  h1= title
-  each el in data
-    p
-      a(href=`/tree/${el}`)= el
+  .path REPO_NAME
+
+  if data
+    each branch in data
+      .list.list__branches
+        a(href=`/branch/${branch.name}/tree/` class=branch.isCurrent ? 'current' : '')
+          = branch.name

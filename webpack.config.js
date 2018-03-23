@@ -7,7 +7,6 @@ const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 module.exports = {
     entry: {
-        index: './app/index.js',
         'assets/script': './app/assets/script.js'
     },
     module: {
@@ -27,7 +26,8 @@ module.exports = {
     plugins: [
         sass,
         new CopyWebpackPlugin([
-            {from: 'app/views/', to: 'views/'}
+            {from: 'app/views/', to: 'views/'},
+            {from: 'app/*.js', to: './', flatten: true}
         ]),
         new BrowserSyncPlugin(
             {

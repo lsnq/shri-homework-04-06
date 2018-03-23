@@ -1,7 +1,7 @@
 /*eslint no-console: off*/
-import router from './router';
-import path from 'path';
-import express from 'express';
+const router = require( './router');
+const path = require( 'path');
+const express = require( 'express');
 
 const app = express();
 
