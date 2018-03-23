@@ -1,7 +1,19 @@
 doctype html
-html
-    head
-        title= title
-        link(rel='stylesheet', href='/style.css')
-    body
-        block content
+html(lang="ru")
+  head
+    title= title
+    link(rel='stylesheet', href='/style.css')
+
+  body
+    header
+      | GIT #{Date.now()}
+
+      nav
+        a(href='/') Ветки
+        a(href='/commits') Коммиты
+        a(href='/tree') Дерево
+        a(href='/blob') Содержимое
+    .root
+      block content
+
+

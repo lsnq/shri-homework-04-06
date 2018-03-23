@@ -1,5 +1,5 @@
 {
-  "extends": "loris/es6",
+  "extends": "loris/es2017",
   "root": true,
   "env": {
     "node": true

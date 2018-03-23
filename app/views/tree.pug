@@ -1,0 +1,8 @@
+extends layout
+
+block content
+  h1= name
+  if data
+    .list
+      each el in data
+        a(href=`/${el.type}/${el.hash}` class=el.type)=el.name

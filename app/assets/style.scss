@@ -1,4 +1,38 @@
 html,
 body {
-  height: 100%;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 14px;
+}
+
+header {
+  font-weight: bold;
+  padding: 2em;
+}
+
+a {
+  color: #00f;
+  text-decoration: none;
+}
+
+nav a {
+  &:not(:last-child) {
+    margin-right: 1em;
+  }
+}
+
+.root {
+  padding: 2em;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+
+  a:not(:last-child) {
+    margin-bottom: 0.5em;
+  }
+
+  a.tree {
+    font-weight: bold;
+  }
 }
