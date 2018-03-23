@@ -9,7 +9,8 @@ const gitCli = async (script) => {
 
 const COMMANDS = {
     branch: 'branch --format="%(refname:short)"',
-    tree: 'ls-tree --abbrev'
+    tree: 'ls-tree --abbrev',
+    commits: 'git rev-list --branches=branch-02* --format=oneline'
 };
 
 class GitData {
