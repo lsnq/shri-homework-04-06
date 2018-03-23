@@ -2,8 +2,9 @@ extends layout
 
 block content
   if data
+
     .path
-      - var baseUrl = `/branch/${name}/tree/`
+      - var baseUrl = `/${name}/tree/`
       a(href='/') REPO_NAME
       a(href=baseUrl)= name
       if path
@@ -12,14 +13,18 @@ block content
         each link, index in links
           - var uri = baseUrl + links.slice(0,index+1).join('/') + '/'
           a(href=`${uri}`)=link
-
-    .list
-      if data.list
-        each el in data.list
-          a(href=el)
-            if el.endsWith('/')
-              strong= el.slice(0,-1)
-            else
-              =el
-      else
-        code.file= data.fileContent
+    a.button(href=`/${name}/commits/`) Коммиты
+    if !data.error
+      .list
+        if data.list
+          each el in data.list
+            .list__item
+              a(href=el)
+                if el.endsWith('/')
+                  strong= el.slice(0,-1)
+                else
+                  =el
+        else
+          code.file= data.fileContent
+    else
+      .error=data.error

@@ -3,26 +3,37 @@ const {exec} = require('child_process');
 const execute = promisify(exec);
 
 const gitCli = async (script) => {
-    const {stdout} = await execute('git ' + script);
+    const {stdout} = await execute(`git --git-dir=dist/repo/.git ${script}`);
     return stdout;
 };
 
 const COMMANDS = {
     branch: 'branch --format="%(if)%(HEAD)%(then)+++%(else)---%(end)%(refname:short)"',
-    commits: (name) => `rev-list --branches=${name}* --format=oneline`,
+    commits: (branch) => `rev-list --branches=${branch}* --format=oneline --abbrev-commit`,
     show: (branch, path) => `show ${branch}:${path}`
 };
 
 async function branches() {
     const dataRaw = await gitCli(COMMANDS.branch);
     const data = dataRaw.split('\n').filter((el) => Boolean(el));
-    const branches = data.map((el) => {
+    return data.map((el) => {
         return {
             isCurrent: el.startsWith('+++'),
             name: el.slice(3)
         };
     });
-    return branches;
+}
+
+async function commits(branch) {
+    const dataRaw = await gitCli(COMMANDS.commits(branch));
+    const data = dataRaw.split('\n').filter((el) => Boolean(el));
+    return data.map((el) => {
+        const commit = el.split(/\s+/);
+        return {
+            hash: commit[0],
+            name: commit.slice(1).join(' ')
+        };
+    });
 }
 
 async function show(branch, path = '') {
@@ -50,5 +61,6 @@ async function show(branch, path = '') {
 
 module.exports = {
     branches,
-    show
+    show,
+    commits
 };

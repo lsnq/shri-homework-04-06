@@ -6,5 +6,5 @@ block content
   if data
     each branch in data
       .list.list__branches
-        a(href=`/branch/${branch.name}/tree/` class=branch.isCurrent ? 'current' : '')
+        a(href=`/${branch.name}/tree/` class=branch.isCurrent ? 'current' : '')
           = branch.name

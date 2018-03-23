@@ -1,6 +1,6 @@
 /*eslint no-console: off*/
 const express = require('express');
-const {branches, show} = require('./git');
+const {branches, show, commits} = require('./git');
 const router = express.Router();
 
 // Список веток
@@ -12,14 +12,16 @@ router.get('/', async (req, res) => {
     });
 });
 
-router.get('/branch/:name/commits', (req, res) => {
-    res.render('index', {
+router.get('/:name/commits/', async (req, res) => {
+    res.render('commits', {
         title: 'Коммит',
-        message: 'Дерево веток'
+        message: 'Дерево веток',
+        data: await commits(req.params.name),
+        name: req.params.name
     });
 });
 
-router.get('/branch/:name/tree/*?', async (req, res) => {
+router.get('/:name/tree/*?', async (req, res) => {
     const path = req.params[0] || '';
     const branchName = req.params.name;
     res.render('tree', {
@@ -28,14 +30,6 @@ router.get('/branch/:name/tree/*?', async (req, res) => {
         data: await show(branchName, path),
         path: path,
         name: branchName
-    });
-});
-
-router.get('/commit/:hash', async (req, res) => {
-    res.render('tree', {
-        title: 'Коммит',
-        message: 'Дерево веток',
-        data: await show(req.params.hash)
     });
 });
 
