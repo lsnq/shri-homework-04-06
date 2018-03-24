@@ -5,13 +5,11 @@ COPY . /app
 
 WORKDIR /app
 
-RUN git clone https://github.com/lsnq/shri-homework-04-06.git repo
-
 RUN yarn install
 
-RUN yarn build
+RUN yarn clone
 
-RUN mkdir -p test3
+RUN yarn build
 
 EXPOSE 8080
 

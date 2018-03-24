@@ -3,7 +3,6 @@ extends layout
 block content
   .nav
     .path
-      - var baseUrl = `/${name}/tree/`
       a(href='/') #
       a= name
     a.button(href=`/branch/${name}/tree/`) Файлы
