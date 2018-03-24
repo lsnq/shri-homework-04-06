@@ -1,11 +1,12 @@
 const {promisify} = require('util');
 const {exec} = require('child_process');
 const moment = require('moment');
+const {repoFolder} = require('../app.config');
 moment.locale('ru');
 const execute = promisify(exec);
 
 const gitCli = async (script) => {
-    const {stdout} = await execute(`git --git-dir=dist/repo/.git ${script}`);
+    const {stdout} = await execute(`git --git-dir=${repoFolder} ${script}`);
     return stdout;
 };
 

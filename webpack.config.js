@@ -27,7 +27,8 @@ module.exports = {
         sass,
         new CopyWebpackPlugin([
             {from: 'app/views/', to: 'views/'},
-            {from: 'app/*.js', to: './', flatten: true}
+            {from: 'app/*.js', to: './', flatten: true},
+            {from: 'app/assets/favicon.ico', to: 'assets/'}
         ]),
         new BrowserSyncPlugin(
             {
