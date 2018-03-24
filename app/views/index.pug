@@ -1,10 +1,12 @@
 extends layout
 
 block content
-  .path REPO_NAME
+  .nav
+    .path #
 
   if data
     each branch in data
       .list.list__branches
-        a(href=`/${branch.name}/tree/` class=branch.isCurrent ? 'current' : '')
-          = branch.name
+        .list__item
+          a(href=`/branch/${branch.name}/tree/` class=branch.isCurrent ? 'current' : '')
+            = branch.name

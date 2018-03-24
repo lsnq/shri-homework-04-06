@@ -1,5 +1,7 @@
 const {promisify} = require('util');
 const {exec} = require('child_process');
+const moment = require('moment');
+moment.locale('ru');
 const execute = promisify(exec);
 
 const gitCli = async (script) => {
@@ -8,8 +10,8 @@ const gitCli = async (script) => {
 };
 
 const COMMANDS = {
-    branch: 'branch --format="%(if)%(HEAD)%(then)+++%(else)---%(end)%(refname:short)"',
-    commits: (branch) => `rev-list --branches=${branch}* --format=oneline --abbrev-commit`,
+    branch: 'branch --format="%(if)%(HEAD)%(then)+++%(else)___%(end)%(refname:short)"',
+    commits: (branch) => `log --format='%h___%an___%s___%at' ${branch}`,
     show: (branch, path) => `show ${branch}:${path}`
 };
 
@@ -28,10 +30,14 @@ async function commits(branch) {
     const dataRaw = await gitCli(COMMANDS.commits(branch));
     const data = dataRaw.split('\n').filter((el) => Boolean(el));
     return data.map((el) => {
-        const commit = el.split(/\s+/);
+        const commit = el.split('___');
+        const time = new Date(commit[3] * 1000);
+
         return {
             hash: commit[0],
-            name: commit.slice(1).join(' ')
+            author: commit[1],
+            message: commit[2],
+            time: moment(time).format('DD MMMM в hh:mm')
         };
     });
 }

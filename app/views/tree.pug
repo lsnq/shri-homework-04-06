@@ -2,18 +2,18 @@ extends layout
 
 block content
   if data
-
-    .path
-      - var baseUrl = `/${name}/tree/`
-      a(href='/') REPO_NAME
-      a(href=baseUrl)= name
-      if path
-        - var links = path.split('/').filter(function(el) {return Boolean(el)})
-
-        each link, index in links
-          - var uri = baseUrl + links.slice(0,index+1).join('/') + '/'
-          a(href=`${uri}`)=link
-    a.button(href=`/${name}/commits/`) Коммиты
+    .nav
+      .path
+        - var baseUrl = `/${type}/${name}/tree/`
+        a(href='/') #
+        a(href=baseUrl)= name
+        if path
+          - var links = path.split('/').filter(function(el) {return Boolean(el)})
+          each link, index in links
+            - var uri = baseUrl + links.slice(0, index+1).join('/') + '/'
+            a(href=`${uri}`)=link
+      if type === 'branch'
+        a.button(href=`/branch/${name}/commits/`) Коммиты
     if !data.error
       .list
         if data.list

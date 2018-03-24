@@ -1,14 +1,20 @@
 extends layout
 
 block content
-  .path
-    - var baseUrl = `/${name}/tree/`
-    a(href='/') REPO_NAME
-    a(href=baseUrl)= name
+  .nav
+    .path
+      - var baseUrl = `/${name}/tree/`
+      a(href='/') #
+      a= name
+    a.button(href=`/branch/${name}/tree/`) Файлы
 
   .list
     each commit in data
-      .list__item
-        a.abbrev(href=`/${commit.hash}/tree/`)= commit.hash
-        = commit.name
+      a.list__item(href=`/commits/${commit.hash}/tree/`)
+        .hash= commit.hash
+        if commit.message
+          .commit-info
+            .message= commit.message
+            .status= `Добавлено ${commit.author}, ${commit.time}`
+
 

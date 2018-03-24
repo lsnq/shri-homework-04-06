@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
     });
 });
 
-router.get('/:name/commits/', async (req, res) => {
+router.get('/branch/:name/commits/', async (req, res) => {
     res.render('commits', {
         title: 'Коммит',
         message: 'Дерево веток',
@@ -21,7 +21,7 @@ router.get('/:name/commits/', async (req, res) => {
     });
 });
 
-router.get('/:name/tree/*?', async (req, res) => {
+router.get('/:type/:name/tree/*?', async (req, res) => {
     const path = req.params[0] || '';
     const branchName = req.params.name;
     res.render('tree', {
@@ -29,7 +29,8 @@ router.get('/:name/tree/*?', async (req, res) => {
         message: 'Дерево веток',
         data: await show(branchName, path),
         path: path,
-        name: branchName
+        name: branchName,
+        type: req.params.type
     });
 });
 
