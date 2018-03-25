@@ -9,7 +9,6 @@ jobs:
     - stage: build and test
       script:
         - yarn build
-        - yarn clone
         - yarn lint
         - yarn test
 
