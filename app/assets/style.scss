@@ -67,6 +67,10 @@ a {
     margin-bottom: 0.5em;
   }
 
+  .folder {
+    font-weight: bold;
+  }
+
   .abbrev {
     font-weight: bold;
     margin-right: 1.5em;
@@ -85,11 +89,10 @@ a {
   }
 }
 
-
-
 code {
   border: 2px solid #f3f3f3;
   border-radius: 10px;
+  display: block;
   font-size: 12px;
   line-height: 1.5;
   overflow-x: auto;

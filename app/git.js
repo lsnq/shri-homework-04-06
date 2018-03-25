@@ -12,7 +12,7 @@ const git = async (cmd) => {
 
 const COMMANDS = {
     branch: () => 'branch --format="%(if)%(HEAD)%(then)+++%(else)___%(end)%(refname:short)"',
-    commits: (branch) => `log --format='%h___%an___%s___%at' --max-count=100 ${branch}`,
+    commits: (branch) => `log --format='%h|%an|%s|%at' --max-count=100 ${branch}`,
     show: (item, path) => `show ${item}:${path}`
 };
 
@@ -31,7 +31,7 @@ async function commits(branch) {
     const dataRaw = await git(COMMANDS.commits(branch));
     const data = dataRaw.split('\n').filter((el) => Boolean(el));
     return data.map((el) => {
-        const commit = el.split('___');
+        const commit = el.split('|');
         const time = new Date(commit[3] * 1000);
         return {
             hash: commit[0],

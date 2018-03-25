@@ -15,16 +15,13 @@ block content
       if type === 'branch'
         a.button(href=`/branch/${name}/commits/`) Коммиты
     if !data.error
-      .list
-        if data.list
+      if data.list
+        .list.tree
           each el in data.list
-            .list__item
+            .list__item(class=el.endsWith('/') ? "folder" : "blob")
               a(href=el)
-                if el.endsWith('/')
-                  strong= el.slice(0,-1)
-                else
-                  =el
-        else
-          code.file= data.fileContent
+                = el.endsWith('/') ?  el.slice(0,-1) : el
+      else
+        code.file= data.fileContent
     else
       .error=data.error

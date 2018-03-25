@@ -1,4 +1,5 @@
 module.exports = {
+    baseUrl: 'http://localhost:8080',
     sets: {
         desktop: {
             files: 'test/desktop'
@@ -13,10 +14,10 @@ module.exports = {
                 }
             }
         },
-        firefox: {
-            desiredCapabilities: {
-                browserName: 'firefox'
-            }
-        }
+        // firefox: {
+        //     desiredCapabilities: {
+        //         browserName: 'firefox'
+        //     }
+        // }
     }
 };
