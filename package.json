@@ -29,9 +29,9 @@
     "webpack-node-externals": "^1.6.0"
   },
   "scripts": {
-    "install": "selenium-standalone install",
     "clean": "rm -rf dist/*",
     "clone": "git clone --mirror https://github.com/lsnq/test-repo.git dist/repo/.git",
+    "init:selenium": "selenium-standalone install",
     "test": "mocha test",
     "lint:scripts": "eslint app/**",
     "lint:styles": "stylelint app/**/*.scss",
