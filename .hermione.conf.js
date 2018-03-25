@@ -15,5 +15,10 @@ module.exports = {
                 }
             }
         },
+        firefox: {
+            desiredCapabilities: {
+                browserName: 'firefox'
+            }
+        }
     }
 };

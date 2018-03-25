@@ -5,6 +5,7 @@
   "main": "index.js",
   "author": "lsnq <pv@lsnq.ru>",
   "license": "MIT",
+  "distRepo": "https://github.com/lsnq/test-repo.git",
   "devDependencies": {
     "browser-sync": "^2.23.6",
     "browser-sync-webpack-plugin": "^2.2.2",
@@ -29,7 +30,7 @@
   },
   "scripts": {
     "clean": "rm -rf dist/*",
-    "clone": "git clone --mirror https://github.com/lsnq/test-repo.git dist/repo/.git",
+    "clone": "git clone --mirror $npm_package_distRepo dist/repo/.git",
     "test": "mocha test",
     "lint:scripts": "eslint app/**",
     "lint:styles": "stylelint app/**/*.scss",
