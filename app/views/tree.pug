@@ -5,7 +5,7 @@ block content
     .nav
       .path
         - var baseUrl = `/${type}/${name}/tree/`
-        a(href='/') #
+        a(href='/')= rootName
         a(href=baseUrl)= name
         if path
           - var links = path.split('/').filter(function(el) {return Boolean(el)})

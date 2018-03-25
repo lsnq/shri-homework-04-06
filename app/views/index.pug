@@ -2,11 +2,11 @@ extends layout
 
 block content
   .nav
-    .path #
+    .path= rootName
 
   if data
-    each branch in data
-      .list.list__branches
-        .list__item
-          a(href=`/branch/${branch.name}/tree/` class=branch.isCurrent ? 'current' : '')
+    .list.list__branches
+      each branch in data
+        .list__item(class=branch.isCurrent ? 'current' : '')
+          a(href=`/branch/${branch.name}/tree/`)
             = branch.name

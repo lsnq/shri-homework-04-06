@@ -5,7 +5,7 @@ const router = express.Router();
 // Список веток
 router.get('/', async (req, res) => {
     res.render('index', {
-        title: 'Список веток',
+        title: 'ветки',
         data: await branches()
     });
 });

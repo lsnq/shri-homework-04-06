@@ -8,6 +8,7 @@ jobs:
   include:
     - stage: test
       script:
+        - yarn clone
         - yarn lint
         - yarn test
 
