@@ -14,6 +14,7 @@
     "eslint": "^4.19.0",
     "eslint-config-loris": "^9.1.0",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "hermione": "^0.65.2",
     "mocha": "^5.0.4",
     "node-sass": "^4.7.2",
     "nodemon": "^1.17.2",
@@ -31,16 +32,17 @@
   "scripts": {
     "clean": "rm -rf dist/*",
     "clone": "git clone --mirror https://github.com/lsnq/test-repo.git dist/repo/.git",
-    "init:selenium": "selenium-standalone install",
+    "test:hermione": "hermione",
     "test": "mocha test",
     "lint:scripts": "eslint app/**",
     "lint:styles": "stylelint app/**/*.scss",
     "lint": "yarn lint:scripts & yarn lint:styles",
     "build:prod": "webpack --mode production",
     "build:dev": "webpack --mode development",
-    "build": "yarn clean && yarn build:prod",
+    "init:selenium": "selenium-standalone install --version=3.4.0",
+    "start:selenium": "selenium-standalone start --version=3.4.0",
     "start:dev": "webpack --mode development --watch & nodemon --watch dist dist/index.js",
-    "start:selenium": "selenium-standalone start",
+    "build": "yarn clean && yarn clone && yarn build:prod",
     "start": "node dist"
   },
   "dependencies": {

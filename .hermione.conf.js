@@ -5,6 +5,7 @@ module.exports = {
             files: 'test/desktop'
         }
     },
+    retry: 3,
     browsers: {
         chrome: {
             desiredCapabilities: {
@@ -14,10 +15,5 @@ module.exports = {
                 }
             }
         },
-        // firefox: {
-        //     desiredCapabilities: {
-        //         browserName: 'firefox'
-        //     }
-        // }
     }
 };

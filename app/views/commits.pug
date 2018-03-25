@@ -7,7 +7,7 @@ block content
       a= name
     a.button(href=`/branch/${name}/tree/`) Файлы
 
-  .list
+  .list.commits
     each commit in data
       a.list__item(href=`/commits/${commit.hash}/tree/`)
         .hash= commit.hash
