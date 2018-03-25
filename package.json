@@ -28,7 +28,7 @@
   },
   "scripts": {
     "clean": "rm -rf dist/*",
-    "clone": "git clone https://github.com/lsnq/shri-homework-04-06.git dist/repo",
+    "clone": "git clone https://github.com/lsnq/shri-homework-04-06.git dist/repo && git --git-dir=dist/repo fetch",
     "test": "mocha test",
     "lint:scripts": "eslint app/**",
     "lint:styles": "stylelint app/**/*.scss",

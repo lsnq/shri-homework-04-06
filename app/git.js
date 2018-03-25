@@ -5,19 +5,19 @@ const {repoFolder} = require('../app.config');
 moment.locale('ru');
 const execute = promisify(exec);
 
-const gitCli = async (script) => {
-    const {stdout} = await execute(`git --git-dir=${repoFolder} ${script}`);
+const git = async (cmd) => {
+    const {stdout} = await execute(`git --git-dir=${repoFolder} ${cmd}`);
     return stdout;
 };
 
 const COMMANDS = {
-    branch: 'branch --format="%(if)%(HEAD)%(then)+++%(else)___%(end)%(refname:short)"',
-    commits: (branch) => `log --format='%h___%an___%s___%at' ${branch}`,
+    branch: () => 'branch --format="%(if)%(HEAD)%(then)+++%(else)___%(end)%(refname:short)"',
+    commits: (branch) => `log --format='%h___%an___%s___%at' --max-count=100 ${branch}`,
     show: (branch, path) => `show ${branch}:${path}`
 };
 
 async function branches() {
-    const dataRaw = await gitCli(COMMANDS.branch);
+    const dataRaw = await git(COMMANDS.branch());
     const data = dataRaw.split('\n').filter((el) => Boolean(el));
     return data.map((el) => {
         return {
@@ -28,7 +28,7 @@ async function branches() {
 }
 
 async function commits(branch) {
-    const dataRaw = await gitCli(COMMANDS.commits(branch));
+    const dataRaw = await git(COMMANDS.commits(branch));
     const data = dataRaw.split('\n').filter((el) => Boolean(el));
     return data.map((el) => {
         const commit = el.split('___');
@@ -45,7 +45,7 @@ async function commits(branch) {
 
 async function show(branch, path = '') {
     try {
-        const data = await gitCli(COMMANDS.show(branch, path));
+        const data = await git(COMMANDS.show(branch, path));
         const type = data.startsWith('tree') ? 'tree' : 'blob';
         const result = {
             path: path,
@@ -67,7 +67,9 @@ async function show(branch, path = '') {
 }
 
 module.exports = {
+    git,
     branches,
     show,
-    commits
+    commits,
+    COMMANDS
 };

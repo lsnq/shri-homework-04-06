@@ -21,9 +21,10 @@ router.get('/branch/:name/commits/', async (req, res) => {
 router.get('/:type/:name/tree/*?', async (req, res) => {
     const path = req.params[0] || '';
     const branchName = req.params.name;
+    const data = await show(branchName, path);
     res.render('tree', {
         title: branchName + ' tree',
-        data: await show(branchName, path),
+        data: data,
         path: path,
         name: branchName,
         type: req.params.type
