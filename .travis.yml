@@ -6,14 +6,12 @@ node_js:
 
 jobs:
   include:
-    - stage: test
+    - stage: build and test
       script:
+        - yarn build
         - yarn clone
         - yarn lint
         - yarn test
-
-    - stage: build
-      script: yarn build
 
     - stage: deploy to staging
       if: branch = master
